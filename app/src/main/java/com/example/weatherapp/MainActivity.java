@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonGetWeather;
     private TextView textViewResult;
 
-    private final String API_KEY = "a7b5135a4555373431f6fd4d69995ca4"; // Klucz API
+    private final String API_KEY = ""; // Klucz API
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
