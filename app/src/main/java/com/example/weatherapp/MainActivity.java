@@ -2,6 +2,7 @@ package com.example.weatherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText editTextCity;
     private Button buttonGetWeather;
+    private Button buttonForecast;
     private TextView textViewResult;
     private GridLayout gridLayoutDefaultCities;
 
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextCity = findViewById(R.id.editTextCity);
         buttonGetWeather = findViewById(R.id.buttonGetWeather);
+        buttonForecast = findViewById(R.id.buttonForecast);
         textViewResult = findViewById(R.id.textViewResult);
         gridLayoutDefaultCities = findViewById(R.id.gridLayoutDefaultCities);
 
@@ -45,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String city = editTextCity.getText().toString();
                 new GetWeatherTask(textViewResult, null).execute(city);
+            }
+        });
+
+        buttonForecast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String city = editTextCity.getText().toString();
+                Intent intent = new Intent(MainActivity.this, ForecastActivity.class);
+                intent.putExtra("city", city);
+                startActivity(intent);
             }
         });
 

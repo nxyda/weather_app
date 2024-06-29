@@ -15,14 +15,29 @@
             android:layout_height="wrap_content"
             android:hint="Enter city name"
             android:padding="10dp"
-            android:inputType="text" />
+            android:inputType="text"
+            android:gravity="center" />
 
-        <Button
-            android:id="@+id/buttonGetWeather"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Get Weather" />
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/buttonGetWeather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Get Weather" />
+
+            <Button
+                android:id="@+id/buttonForecast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Forecast" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewResult"
@@ -38,7 +53,8 @@
             android:layout_marginTop="16dp"
             android:text="Default Cities Weather"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center" />
 
         <GridLayout
             android:id="@+id/gridLayoutDefaultCities"
