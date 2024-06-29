@@ -1,69 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/editTextCity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter city name"
-            android:padding="10dp"
-            android:inputType="text"
-            android:gravity="center" />
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/buttonGetWeather"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editTextCity"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Get Weather" />
+                android:hint="Enter city name"
+                android:padding="10dp"
+                android:inputType="text"
+                android:gravity="center" />
 
-            <Button
-                android:id="@+id/buttonForecast"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="Forecast" />
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/buttonGetWeather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Get Weather" />
+
+                <Button
+                    android:id="@+id/buttonForecast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Forecast" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textViewDefaultCities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Default Cities Weather"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <GridLayout
+                android:id="@+id/gridLayoutDefaultCities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:columnCount="2"
+                android:rowCount="3"
+                android:orientation="horizontal">
+            </GridLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/textViewResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textSize="18sp" />
+    <!-- Bottom navigation view -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:menu="@menu/bottom_navigation_menu" />
 
-        <TextView
-            android:id="@+id/textViewDefaultCities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Default Cities Weather"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center" />
-
-        <GridLayout
-            android:id="@+id/gridLayoutDefaultCities"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:columnCount="2"
-            android:rowCount="3"
-            android:orientation="horizontal">
-        </GridLayout>
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>
