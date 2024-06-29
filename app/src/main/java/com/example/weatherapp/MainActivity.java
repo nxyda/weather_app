@@ -156,11 +156,14 @@ public class MainActivity extends AppCompatActivity {
                                 weatherImageView.setImageResource(R.drawable.sun);
                                 break;
                             case "few clouds":
+                                weatherImageView.setImageResource(R.drawable.sun_and_clouds);
                             case "scattered clouds":
+                                weatherImageView.setImageResource(R.drawable.sun_and_clouds);
                             case "broken clouds":
                                 weatherImageView.setImageResource(R.drawable.sun_and_clouds);
                                 break;
                             case "shower rain":
+                                weatherImageView.setImageResource(R.drawable.rain);
                             case "rain":
                                 weatherImageView.setImageResource(R.drawable.rain);
                                 break;
@@ -171,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                                 weatherImageView.setImageResource(R.drawable.snow);
                                 break;
                             case "mist":
+                                weatherImageView.setImageResource(R.drawable.clouds);
                             case "fog":
                                 weatherImageView.setImageResource(R.drawable.clouds);
                                 break;

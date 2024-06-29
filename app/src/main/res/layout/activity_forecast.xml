@@ -5,9 +5,18 @@
     android:padding="16dp">
 
     <LinearLayout
-        android:id="@+id/linearLayoutForecast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <GridLayout
+            android:id="@+id/gridLayoutForecast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="4"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+        </GridLayout>
     </LinearLayout>
 </ScrollView>
