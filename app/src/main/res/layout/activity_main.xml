@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,14 +16,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
+            <TextView
+                android:id="@+id/textViewWeather"
+                android:layout_width="392dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/weather"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Weather"
+                android:textColor="#000000"
+                android:textSize="40dp"
+                android:textStyle="bold" />
+
             <EditText
                 android:id="@+id/editTextCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewWeather"
+                android:gravity="center"
                 android:hint="Enter city name"
-                android:padding="10dp"
                 android:inputType="text"
-                android:gravity="center" />
+                android:minHeight="48dp"
+                android:padding="10dp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,7 +52,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Get Weather" />
+                    android:text="Get Weather"
+                    android:background="@drawable/button_background"
+                    android:textColor="@android:color/white"
+                />
 
                 <Button
                     android:id="@+id/buttonForecast"
@@ -42,8 +63,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
-                    android:text="Forecast" />
+                    android:text="Forecast"
+                    android:background="@drawable/button_background"
+                    android:textColor="@android:color/white"
+                />
             </LinearLayout>
+
 
             <TextView
                 android:id="@+id/textViewResult"
@@ -73,6 +98,7 @@
             </GridLayout>
         </LinearLayout>
     </ScrollView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
