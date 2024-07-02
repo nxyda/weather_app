@@ -2,7 +2,6 @@ package com.example.weatherapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonForecast;
     private TextView textViewResult;
     private GridLayout gridLayoutDefaultCities;
+    private BottomNavigationView bottomNavigationView;
 
     private final String API_KEY = ""; // Klucz API
 
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         buttonForecast = findViewById(R.id.buttonForecast);
         textViewResult = findViewById(R.id.textViewResult);
         gridLayoutDefaultCities = findViewById(R.id.gridLayoutDefaultCities);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         buttonGetWeather.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,10 +67,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        displayDefaultCitiesWeather();
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        startActivity(new Intent(MainActivity.this, MainActivity.class));
+                        return true;
+//                    case R.id.navigation_place:
+//                        startActivity(new Intent(MainActivity.this, PlaceActivity.class));
+//                        return true;
+                    case R.id.navigation_forecast:
+                        startActivity(new Intent(MainActivity.this, SearchActivity.class));
+                        return true;
+                }
+                return false;
+            }
+        });
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+        displayDefaultCitiesWeather();
     }
 
     private void displayDefaultCitiesWeather() {
@@ -151,11 +167,12 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     JSONObject main = jsonObject.getJSONObject("main");
-                    String temperature = main.getString("temp");
+                    double temperature = main.getDouble("temp");
                     String description = jsonObject.getJSONArray("weather").getJSONObject(0).getString("description");
 
                     if (resultTextView != null) {
-                        resultTextView.setText(temperature + "°C");
+                        int roundedTemperature = (int) Math.round(temperature);
+                        resultTextView.setText(roundedTemperature + "°C");
                     }
 
                     if (weatherImageView != null) {
@@ -165,13 +182,16 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case "few clouds":
                                 weatherImageView.setImageResource(R.drawable.sun_and_clouds);
+                                break;
                             case "scattered clouds":
                                 weatherImageView.setImageResource(R.drawable.sun_and_clouds);
+                                break;
                             case "broken clouds":
                                 weatherImageView.setImageResource(R.drawable.sun_and_clouds);
                                 break;
                             case "shower rain":
                                 weatherImageView.setImageResource(R.drawable.rain);
+                                break;
                             case "rain":
                                 weatherImageView.setImageResource(R.drawable.rain);
                                 break;
@@ -183,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case "mist":
                                 weatherImageView.setImageResource(R.drawable.clouds);
+                                break;
                             case "fog":
                                 weatherImageView.setImageResource(R.drawable.clouds);
                                 break;
@@ -204,27 +225,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-
-                    switch (item.getItemId()) {
-                        case R.id.action_home:
-                            break;
-                        case R.id.action_place:
-                            Intent placeIntent = new Intent(MainActivity.this, PlaceActivity.class);
-                            startActivity(placeIntent);
-                            break;
-                        case R.id.action_forecast:
-                            Intent forecastIntent = new Intent(MainActivity.this, ForecastActivity.class);
-                            startActivity(forecastIntent);
-                            break;
-                    }
-
-                    return true;
-                }
-            };
 }
