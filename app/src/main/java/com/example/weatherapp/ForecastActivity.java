@@ -72,7 +72,7 @@ public class ForecastActivity extends AppCompatActivity {
                         JSONObject listItem = list.getJSONObject(i);
                         String dateTime = listItem.getString("dt_txt").substring(11, 16);
                         JSONObject main = listItem.getJSONObject("main");
-                        String temperature = main.getString("temp");
+                        double temperature = main.getDouble("temp");
                         String description = listItem.getJSONArray("weather").getJSONObject(0).getString("description");
 
                         LinearLayout forecastLayout = new LinearLayout(ForecastActivity.this);
@@ -95,7 +95,8 @@ public class ForecastActivity extends AppCompatActivity {
                         dateTimeTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                         TextView temperatureTextView = new TextView(ForecastActivity.this);
-                        temperatureTextView.setText(temperature + "°C");
+                        int roundedTemperature = (int) Math.round(temperature);
+                        temperatureTextView.setText(roundedTemperature + "°C");
                         temperatureTextView.setTextSize(18);
                         temperatureTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
@@ -105,11 +106,14 @@ public class ForecastActivity extends AppCompatActivity {
                                 weatherImageView.setImageResource(R.drawable.sun);
                                 break;
                             case "few clouds":
+                                weatherImageView.setImageResource(R.drawable.clouds);
                             case "scattered clouds":
+                                weatherImageView.setImageResource(R.drawable.clouds);
                             case "broken clouds":
                                 weatherImageView.setImageResource(R.drawable.sun_and_clouds);
                                 break;
                             case "shower rain":
+                                weatherImageView.setImageResource(R.drawable.rain);
                             case "rain":
                                 weatherImageView.setImageResource(R.drawable.rain);
                                 break;
@@ -120,6 +124,7 @@ public class ForecastActivity extends AppCompatActivity {
                                 weatherImageView.setImageResource(R.drawable.snow);
                                 break;
                             case "mist":
+                                weatherImageView.setImageResource(R.drawable.clouds);
                             case "fog":
                                 weatherImageView.setImageResource(R.drawable.clouds);
                                 break;
